@@ -145,6 +145,8 @@ Open [enclosure.solidcraft](mechanical/cad/enclosure.solidcraft) with its siblin
 
 ## Project layout and development
 
+All updates use a topic branch and pull request. See [contributing](CONTRIBUTING.md) for the required workflow.
+
 | Path | Contents |
 | --- | --- |
 | [firmware/](firmware/) | CircuitPython animation, scheduling and local web server |
