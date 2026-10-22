@@ -1,4 +1,4 @@
-name: Prepare release draft
+name: Publish release
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: Existing version tag to prepare
+        description: Existing version tag to publish
         required: true
         type: string
 
@@ -19,7 +19,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  draft:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -91,7 +91,7 @@ jobs:
           PY
           git archive --format=zip --output="$RUNNER_TEMP/halloween-leds-$RELEASE_TAG.zip" HEAD
 
-      - name: Create draft with generated release notes
+      - name: Publish with generated release notes
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -100,15 +100,15 @@ jobs:
             echo "A release already exists for $RELEASE_TAG; leaving it unchanged."
             exit 0
           fi
-          flags=()
-          if [[ "$RELEASE_TAG" == v0.* || "$RELEASE_TAG" == *-* ]]; then
-            flags+=(--prerelease)
+          flags=(--latest)
+          if [[ "$RELEASE_TAG" == *-* ]]; then
+            flags=(--prerelease --latest=false)
           fi
           gh release create "$RELEASE_TAG" \
             "$RUNNER_TEMP/halloween-leds-$RELEASE_TAG.zip" \
             docs/Halloween-LEDs-Build-Guide.pdf \
             --repo "$GITHUB_REPOSITORY" \
-            --verify-tag --draft --generate-notes \
+            --verify-tag --generate-notes \
             --title "$RELEASE_TAG" \
             --notes-file "$RUNNER_TEMP/release-notes.md" \
             "${flags[@]}"
