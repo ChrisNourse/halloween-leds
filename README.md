@@ -2,7 +2,7 @@
 <h1>Halloween LEDs</h1>
 <p><strong>A battery-powered tabletop uplight with a browser control desk and an editable, four-part enclosure.</strong></p>
 <p>
-  <a href="STATUS.md"><img src="https://img.shields.io/badge/v0.9.0-experimental-orange" alt="v0.9.0: experimental"></a>
+  <a href="STATUS.md"><img src="https://img.shields.io/badge/v0.9.2-experimental-orange" alt="v0.9.2: experimental"></a>
   <a href="firmware/"><img src="https://img.shields.io/badge/firmware-CircuitPython-8b5cf6" alt="Firmware: CircuitPython"></a>
   <a href="mechanical/cad/"><img src="https://img.shields.io/badge/editable_CAD-SolidCraft-2563eb" alt="Editable CAD: SolidCraft"></a>
   <a href="mechanical/exports/stl/"><img src="https://img.shields.io/badge/print_files-4_STLs-238636" alt="Print files: four STLs"></a>
@@ -14,7 +14,7 @@
 
 Choose a Halloween lighting pattern, build a color gradient, or let the light follow sunset and sunrise. The Feather runs the show itself and serves the controls directly to your phone or computer. Closing the browser does not stop the lights.
 
-> **v0.9.0 — experimental build:** final CAD, four printable STLs and the illustrated guide are synchronized. The print meshes pass digital checks. Hardware qualification is in progress: the reported boost wiring correction, fit, temperature and battery testing still need recorded results. See [project status](STATUS.md).
+> **v0.9.2 — experimental build:** final CAD, four printable STLs and the illustrated guide are synchronized. The print meshes pass digital checks. Hardware qualification is in progress: the reported boost wiring correction, fit, temperature and battery testing still need recorded results. See [project status](STATUS.md).
 
 **Explore:** [Browser controls](#control-it-from-your-browser) · [Build one](#build-one) · [Wi-Fi setup](#connect-to-your-wi-fi) · [Connection help](#will-halloweenlocal-work-automatically) · [CAD design](#designed-to-be-understood-and-modified) · [Development](#project-layout-and-development)
 
@@ -169,7 +169,7 @@ The test suites cover firmware behavior, installation/OTA, browser controls, loc
 
 ## Release and license
 
-The project name is **halloween-leds**; the first release is **v0.9.0**, experimental while hardware qualification is in progress. Version **v1.0.0** is reserved for the qualified build. See [project status and known limitations](STATUS.md). Version tags prepare a GitHub release draft with generated change notes, the status at that tag, and downloadable project files; see [the release process](docs/releasing.md).
+The project name is **halloween-leds**; the current project version is **v0.9.2**, experimental while hardware qualification is in progress. Published versions are listed in [GitHub Releases](https://github.com/ChrisNourse/halloween-leds/releases). Version **v1.0.0** is reserved for the qualified build. See [project status and known limitations](STATUS.md). Version tags prepare a GitHub release draft with generated change notes, the status at that tag, and downloadable project files; see [the release process](docs/releasing.md).
 
 Original software uses **GPL-3.0-only**, hardware designs use **CERN-OHL-S-2.0**, and original documentation uses **CC BY-SA 4.0**. Commercial reuse is allowed subject to the source-sharing and attribution requirements of the applicable license. See [license scope and full texts](LICENSE.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 

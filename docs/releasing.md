@@ -28,7 +28,7 @@ Labels are configured in [.github/release.yml](../.github/release.yml); create t
 
 ## Release steps
 
-1. Update the package version, lockfile, README, status and guide edition. Rebuild the guide when its source changes.
+1. Choose the next release version and update the package version, lockfile, README, status and guide provenance. Use patch increments for compatible corrections; PR numbers do not determine the version, and multiple PRs can be included in one release. The PDF generator reads the version from `package.json`; rebuild the guide after every version change.
 2. Run the host and browser checks from the [development instructions](../README.md#project-layout-and-development); the PR must also pass all three required CI jobs. Confirm the CAD, STLs, guide, BOM and wiring describe the same build.
 3. Commit and push release changes on a topic branch, then open and merge a PR into `main` following [the contribution workflow](../CONTRIBUTING.md). Use the intended public Git author identity.
 4. Create an annotated version tag on the merged commit in `main` and push it. For example, the initial release used:

@@ -9,13 +9,14 @@ from reportlab.lib.colors import HexColor
 from reportlab.platypus import Paragraph
 from reportlab.lib.styles import ParagraphStyle
 ROOT=Path(__file__).resolve().parents[2]
+VERSION=json.loads((ROOT/'package.json').read_text())['version']
 ASSETS=Path(__file__).parent/'assets'
 OUT=ROOT/'docs/Halloween-LEDs-Build-Guide.pdf'
 W,H=720,405
 c=canvas.Canvas(str(OUT),pagesize=(W,H),pageCompression=1)
-c.setTitle('Halloween LEDs v0.9.0 | Build guide')
+c.setTitle(f'Halloween LEDs v{VERSION} | Build guide')
 c.setAuthor('Halloween LEDs project contributors')
-c.setSubject('Illustrated assembly, wiring and commissioning; v0.9.0 experimental edition')
+c.setSubject(f'Illustrated assembly, wiring and commissioning; v{VERSION} experimental edition')
 INK='#252B30';GRAY='#68737C';BLUE='#147CAD';LIGHT='#B9C0C5';RULE='#D4DADF'
 page=0
 
@@ -33,7 +34,7 @@ def start(n,title,sub=''):
  if sub: text(sub,87,50,8,GRAY)
 def end():
  c.setStrokeColor(HexColor(RULE));c.setLineWidth(.4);c.line(26,29,694,29)
- text('Halloween LEDs  /  v0.9.0 experimental  /  CAD 294cd1f · 22 Oct 2026',26,391,7,GRAY)
+ text(f'Halloween LEDs  /  v{VERSION} experimental  /  CAD 294cd1f · 22 Oct 2026',26,391,7,GRAY)
  text(f'{page:02}',679,391,8,GRAY);c.showPage()
 def tag(s,x,y=65,w=142):
  c.setDash(1,2);c.setStrokeColor(HexColor(LIGHT));c.setLineWidth(.6);c.roundRect(x,H-y-24,w,24,3,fill=0,stroke=1);c.setDash()
@@ -72,11 +73,11 @@ def assembly(n,title,tags,items,drawing,caption):
  steps(items);cad(drawing,265,104,425,226);note(caption);end()
 def link(label,url,x,y,w=630):return para(f'<link href="{url}" color="{BLUE}">{label}</link>',x,y,w,9)
 
-start('','Halloween LEDs','Build guide · v0.9.0 experimental')
+start('','Halloween LEDs',f'Build guide · v{VERSION} experimental')
 text('A small light you can build,',28,104,24,bold=True);text('program and modify.',28,135,24,bold=True)
 para('Two RGB LED sticks. Battery power. Local browser controls. Four printed parts with editable SolidCraft sketches and operations.',30,158,285,12)
 cad('assembled',348,82,340,225)
-para('<b>Final CAD handoff · 294cd1f</b><br/>Assembly illustrations and four printable STLs match the saved mechanical design from 22 October 2026. Digital mesh checks pass. Hardware qualification is in progress; v0.9.0 is experimental.',30,266,285,9)
+para(f'<b>Final CAD handoff · 294cd1f</b><br/>Assembly illustrations and four printable STLs match the saved mechanical design from 22 October 2026. Digital mesh checks pass. Hardware qualification is in progress; v{VERSION} is experimental.',30,266,285,9)
 para('Build-guide presentation inspired by <link href="https://www.curvlab.com/guides/wr1-build" color="'+BLUE+'">CURV LAB\'s WR1 Chassis Build Guide</link>. Assembly illustrations come from this project\'s own CAD.',361,320,324,8,GRAY);end()
 
 start('0.1','Before you begin')
