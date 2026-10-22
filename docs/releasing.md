@@ -46,6 +46,8 @@ Use patch releases for compatible corrections and minor releases for additions. 
 
 ## Version management
 
+Every PR must carry exactly one `patch`, `minor` or `major` label. The required `Version consistency` job fails for missing or conflicting labels and reruns when labels are added or removed. Other labels still control the release-note categories above. The label selects the intended increment; automatic label-triggered version updates are not yet implemented. Multiple PRs can contribute to one release; use the largest applicable increment when preparing that release.
+
 `package.json` is the authoritative current version. The [version tool](../scripts/version.py) updates its version, both project entries in `package-lock.json`, the current-version fields in the README and status, the guide's source README and provenance, and the generated PDF:
 
 ```sh

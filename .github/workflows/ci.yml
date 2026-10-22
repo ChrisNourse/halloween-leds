@@ -2,7 +2,7 @@ name: CI
 
 on:
   pull_request:
-    branches: [main]
+    types: [opened, synchronize, reopened, edited, ready_for_review, labeled, unlabeled]
   push:
     branches: [main]
 
@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: '3.12'
           enable-cache: false
+      - name: Require exactly one semantic version label
+        if: github.event_name == 'pull_request'
+        run: uv run scripts/version.py --check-label
       - name: Check current version references and PDF
         run: uv run scripts/version.py --check
 

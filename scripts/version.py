@@ -5,6 +5,7 @@
 """Synchronize current project versions and verify the committed build guide."""
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -38,6 +39,14 @@ def bumped_version(version, amount):
     major, minor, patch = map(int, validate_version(version).split("."))
     return {"major": f"{major + 1}.0.0", "minor": f"{major}.{minor + 1}.0",
             "patch": f"{major}.{minor}.{patch + 1}"}[amount]
+
+
+def semantic_label(names):
+    selected = set(names) & {"patch", "minor", "major"}
+    if len(selected) != 1:
+        raise ValueError("Every PR requires exactly one version label: patch, minor or major. "
+                         f"Found: {', '.join(sorted(selected)) or 'none'}")
+    return selected.pop()
 
 
 def current_version_files(root, version):
@@ -109,10 +118,16 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     operation = parser.add_mutually_exclusive_group()
     operation.add_argument("--check", action="store_true", help="check consistency without modifying files (default)")
+    operation.add_argument("--check-label", action="store_true", help="require one semantic version label in the GitHub PR event")
     operation.add_argument("--set", metavar="X.Y.Z", help="set a version, synchronize references and rebuild the PDF")
     operation.add_argument("--bump", choices=("patch", "minor", "major"), help="increment the package version and regenerate references/PDF")
     args = parser.parse_args()
     try:
+        if args.check_label:
+            event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
+            label = semantic_label(item["name"] for item in event["pull_request"]["labels"])
+            print(f"Version label: {label}. Use --bump {label} when preparing the next release.")
+            return
         if args.set or args.bump:
             version = args.set or bumped_version(project_version(ROOT), args.bump)
             synchronize_metadata(ROOT, version)
