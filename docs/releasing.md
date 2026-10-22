@@ -30,8 +30,8 @@ Labels are configured in [.github/release.yml](../.github/release.yml); create t
 
 1. Update the package version, lockfile, README, status and guide edition. Rebuild the guide when its source changes.
 2. Run the host and browser checks from the [development instructions](../README.md#project-layout-and-development). Confirm the CAD, STLs, guide, BOM and wiring describe the same build.
-3. Commit and push the source, including the release workflow and configuration. Use the intended public Git author identity.
-4. Create an annotated version tag on that commit and push it. For the initial release:
+3. Commit and push release changes on a topic branch, then open and merge a PR into `main` following [the contribution workflow](../CONTRIBUTING.md). Use the intended public Git author identity.
+4. Create an annotated version tag on the merged commit in `main` and push it. For example, the initial release used:
 
    ```sh
    git tag -a v0.9.0 -m "v0.9.0 — experimental"
