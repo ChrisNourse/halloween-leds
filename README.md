@@ -165,6 +165,8 @@ npm run test:browser
 
 The test suites cover firmware behavior, installation/OTA, browser controls, location settings, polar-season fallback and HTTP host validation. Physical assembly, thermal performance, battery runtime and sunrise/sunset transitions need their own hardware checks; see [project status](STATUS.md).
 
+[CI](.github/workflows/ci.yml) runs host tests, Chromium browser tests and GitHub Actions workflow linting on every PR and after merges to `main`. All three checks are required before merging. Failed browser runs provide an HTML report and traces in the workflow artifacts.
+
 ## Release and license
 
 The project name is **halloween-leds**; the first release is **v0.9.0**, experimental while hardware qualification is in progress. Version **v1.0.0** is reserved for the qualified build. See [project status and known limitations](STATUS.md). Version tags prepare a GitHub release draft with generated change notes, the status at that tag, and downloadable project files; see [the release process](docs/releasing.md).
