@@ -9,5 +9,7 @@
     "test": "uv run --python 3.12 python -m unittest discover -s tests -v",
     "test:browser": "playwright test"
   },
-  "devDependencies": {"@playwright/test": "^1.58.0"}
+  "devDependencies": {
+    "@playwright/test": "^1.58.0"
+  }
 }

@@ -7,7 +7,7 @@ The firmware, browser controls, editable CAD, four print meshes and illustrated 
 ## Available and checked
 
 - Browser controls for patterns, gradients, brightness, speed, blackout and solar scheduling, plus USB installation and OTA application updates.
-- 58 host tests and 23 browser tests passed, covering runtime behavior, settings, polar-season fallback, HTTP host validation and browser interactions.
+- 62 host tests and 23 browser tests passed, covering runtime behavior, settings, polar-season fallback, HTTP host validation and browser interactions.
 - Four print meshes pass digital checks for watertightness, consistent winding and a single connected solid. All fit a 180 × 180 mm bed. See [mesh validation](mechanical/validation/print-meshes.json).
 - Editable native CAD, matching print files and a 24-page [build guide](docs/Halloween-LEDs-Build-Guide.pdf). See [mechanical validation](mechanical/validation/mechanical-handoff.json).
 - [Reciprocal licenses](LICENSE.md) for software, hardware and original documentation, with [third-party notices and credits](THIRD_PARTY_NOTICES.md).
