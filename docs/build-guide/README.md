@@ -2,7 +2,7 @@
 
 [Open the PDF](../Halloween-LEDs-Build-Guide.pdf).
 
-Edition: **v0.9.0 — experimental**. Hardware qualification is in progress for v1.0.0.
+Edition: **v0.9.2 — experimental**. Hardware qualification is in progress for v1.0.0.
 
 Build-guide presentation inspired by [CURV LAB's WR1 Chassis Build Guide](https://www.curvlab.com/guides/wr1-build). The guide uses a 720 × 405 pt landscape page, numbered operations, dotted parts/quantity labels, and gray/blue CAD illustrations. All assembly illustrations come from this project's CAD; no CURV LAB illustrations or branding are reused.
 
