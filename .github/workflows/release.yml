@@ -64,6 +64,22 @@ jobs:
             : > "$notes"
           fi
           cat STATUS.md >> "$notes"
+          python3 - "$notes" <<'PY'
+          import os
+          from pathlib import Path
+          import re
+          import sys
+          from urllib.parse import quote, urlsplit
+
+          notes = Path(sys.argv[1])
+          source = f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/blob/{quote(os.environ['RELEASE_TAG'], safe='')}/"
+          def source_link(match):
+              target = match[2]
+              if urlsplit(target).scheme or target.startswith(('#', '/')):
+                  return match[0]
+              return match[1] + source + quote(target, safe='/#%') + match[3]
+          notes.write_text(re.sub(r'(!?\[[^\]]*\]\()([^\)]+)(\))', source_link, notes.read_text()))
+          PY
           git archive --format=zip --output="$RUNNER_TEMP/halloween-leds-$RELEASE_TAG.zip" HEAD
 
       - name: Create draft with generated release notes
