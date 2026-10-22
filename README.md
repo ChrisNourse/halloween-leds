@@ -169,7 +169,7 @@ The test suites cover firmware behavior, installation/OTA, browser controls, loc
 
 ## Release and license
 
-The project name is **halloween-leds**; the current project version is **v0.9.2**, experimental while hardware qualification is in progress. Published versions are listed in [GitHub Releases](https://github.com/ChrisNourse/halloween-leds/releases). Version **v1.0.0** is reserved for the qualified build. See [project status and known limitations](STATUS.md). Version tags prepare a GitHub release draft with generated change notes, the status at that tag, and downloadable project files; see [the release process](docs/releasing.md).
+The project name is **halloween-leds**; the current project version is **v0.9.2**, experimental while hardware qualification is in progress. Published versions are listed in [GitHub Releases](https://github.com/ChrisNourse/halloween-leds/releases). Version **v1.0.0** is reserved for the qualified build. See [project status and known limitations](STATUS.md). Version tags publish a GitHub release with generated change notes, the status at that tag, and downloadable project files; see [the release process](docs/releasing.md).
 
 Original software uses **GPL-3.0-only**, hardware designs use **CERN-OHL-S-2.0**, and original documentation uses **CC BY-SA 4.0**. Commercial reuse is allowed subject to the source-sharing and attribution requirements of the applicable license. See [license scope and full texts](LICENSE.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
