@@ -26,4 +26,4 @@ The base CAD retains a geometry-reference warning on its floor-root fillet. The 
 
 ## Release history
 
-Version-specific changes are recorded in [GitHub Releases](https://github.com/ChrisNourse/halloween-leds/releases). Each release draft captures this status from its tag so that later updates do not change the recorded limitations of an older release. See [the release process](docs/releasing.md).
+Version-specific changes are recorded in [GitHub Releases](https://github.com/ChrisNourse/halloween-leds/releases). Each release captures this status from its tag so that later updates do not change the recorded limitations of an older release. See [the release process](docs/releasing.md).
