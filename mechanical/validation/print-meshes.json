@@ -1,0 +1,92 @@
+{
+  "source_revision": "294cd1f",
+  "method": "Native SolidCraft STL export with temporary rigid print-orientation transforms. Native source files unchanged.",
+  "parts": [
+    {
+      "file": "mechanical/exports/stl/base.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "bounds_mm": [
+        [
+          -44.0,
+          -43.0,
+          -1.2122546022563796e-10
+        ],
+        [
+          44.0,
+          43.0,
+          25.0
+        ]
+      ],
+      "volume_mm3": 48142.797895941745,
+      "faces": 19302,
+      "sha256": "75b08529ec8e4a309bf5b29f03c402d85881f7ee8b7841524d20140782f2b7cb"
+    },
+    {
+      "file": "mechanical/exports/stl/faceplate.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "bounds_mm": [
+        [
+          -44.0,
+          -43.0,
+          1.5358750512714514e-12
+        ],
+        [
+          44.0,
+          43.0,
+          16.399999618530273
+        ]
+      ],
+      "volume_mm3": 22752.254376555065,
+      "faces": 9954,
+      "sha256": "a3494e6350fcc97ec574b185e098cf889011e5d16ee06bfcd180d361967c1b0e"
+    },
+    {
+      "file": "mechanical/exports/stl/feather-retainer.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "bounds_mm": [
+        [
+          -40.79999923706055,
+          6.0,
+          -4.523622229975427e-15
+        ],
+        [
+          19.299999237060547,
+          32.20000076293945,
+          8.399999618530273
+        ]
+      ],
+      "volume_mm3": 2394.736031154773,
+      "faces": 6938,
+      "sha256": "45761a6c36ac6b3886a775f47a3974bea72a13eb636d239a7da27d1b1c33662d"
+    },
+    {
+      "file": "mechanical/exports/stl/led-retainer.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "bounds_mm": [
+        [
+          -38.0,
+          -18.0,
+          -3.1289245283269707e-13
+        ],
+        [
+          38.0,
+          18.0,
+          6.0
+        ]
+      ],
+      "volume_mm3": 6779.77560356044,
+      "faces": 9084,
+      "sha256": "965028e8c84b847cd578d68bea4c49e3b5fd3d8355fb5fa27a365fdda529f574"
+    }
+  ],
+  "physical_fit_tested": false,
+  "slicing_performed": false
+}

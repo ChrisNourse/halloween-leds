@@ -1,0 +1,22 @@
+changelog:
+  exclude:
+    labels:
+      - skip-release-notes
+  categories:
+    - title: Hardware and print files
+      labels:
+        - hardware
+        - cad
+    - title: Firmware and browser controls
+      labels:
+        - firmware
+        - web
+    - title: Build guide and documentation
+      labels:
+        - documentation
+    - title: Fixes
+      labels:
+        - bug
+    - title: Other changes
+      labels:
+        - "*"

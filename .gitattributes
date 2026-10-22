@@ -1,0 +1,4 @@
+*.pdf binary
+*.solidcraft binary
+*.stl binary
+docs/build-guide/assets/references/adafruit-feather-upstream-README.md -whitespace

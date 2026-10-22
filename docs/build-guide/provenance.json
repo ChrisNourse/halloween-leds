@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-22",
+  "edition": "v0.9.0 experimental",
+  "cad_snapshot": "Final saved mechanical handoff, copied unchanged for presentation and export.",
+  "history_checkpoint": "294cd1f7de67e81fa27a6ba7764eaf110d739fe0",
+  "images": "Native SolidCraft file.export_view_dxf; layers rendered as vector lines. Appearance and exploded placement only; no geometry edits.",
+  "source_sha256": {
+    "base.solidcraft": "629c2172e33b49eff9ac247878c783315e8fa2103fe733096721aa5cfc52c138",
+    "enclosure.solidcraft": "32113f8444b22f50b2c44050651c82488019310408d8574bbde73b96f7630d57",
+    "faceplate.solidcraft": "6adea94b270e026926e6003f31d5a6661773ac0a2ad7e9173c79d20809508da4",
+    "feather-retainer.solidcraft": "6d074382ea6784aa147f5889f00c7bca1fa1308f90957200618bd53db93ea7ab",
+    "hardware/2x6-dowel.solidcraft": "9c7ff9be9ac4cb29fbd6b05883c14c19d8c1d6ccd6b145a3d192df6a1c796b9f",
+    "hardware/m2x4-insert.solidcraft": "1eeb456c805f530d953a2d4f506f4d8d99ea12c3c14c866a74fe5354ddd3fa30",
+    "hardware/m2x8-button-screw.solidcraft": "c4b0cfcb9e5b452fa5cad68586f020b0159a1d5ab6f628106d182b3c1e66b83e",
+    "hardware/m3x5_7-insert.solidcraft": "51618c234800e5775ef07bc30f3c7ddd61e01ac5c6b0b9a0cd80eb7fb85a164e",
+    "hardware/m3x8-screw.solidcraft": "4355446764568ea12fe8b383195d1fc2f72e008a9eb297a21571be9b9ed72fd9",
+    "led-retainer.solidcraft": "7a30c123104bab20573eb191b2751051fdc2aa693c616eb64b9ca01efa3b4cf9"
+  },
+  "limitations": [
+    "Hardware qualification in progress for v1.0.0; physical assembly, enclosed temperature and battery runtime results not yet recorded",
+    "LED JST connector family, harness pinout and routing details pending",
+    "Reported boost input on 3V; correction to BAT and verification pending"
+  ],
+  "references": [
+    "https://learn.adafruit.com/adafruit-neopixel-uberguide/best-practices",
+    "https://learn.adafruit.com/adafruit-esp32-s2-feather/power-management",
+    "https://www.ti.com/lit/ds/symlink/sn74ahct125.pdf",
+    "https://www.adafruit.com/product/1426"
+  ],
+  "pdf_pages": 24,
+  "builder_workflow": "Print and assemble four supplied enclosure parts. Final fit dimensions are maintained by the project owner before release.",
+  "reference_images": [
+    {
+      "file": "assets/references/adafruit-feather-esp32-s2-pinout.png",
+      "creator": "Adafruit",
+      "source": "https://learn.adafruit.com/adafruit-esp32-s2-feather/pinouts",
+      "artwork": "https://github.com/adafruit/Adafruit-Feather-ESP32-S2-PCB/blob/main/Adafruit%20Feather%20ESP32-S2%20Pinout.pdf",
+      "processing": "Full PDF page rendered to PNG at 4x; no labels changed.",
+      "license": "CC-BY-SA-3.0",
+      "license_source": "https://github.com/adafruit/Adafruit-Feather-ESP32-S2-PCB/blob/main/license.txt"
+    }
+  ],
+  "presentation_inspiration": {
+    "title": "CURV LAB WR1 Chassis Build Guide",
+    "url": "https://www.curvlab.com/guides/wr1-build",
+    "scope": "Presentation reference only; no CURV LAB illustrations, text or branding reused."
+  },
+  "licenses": {
+    "original_guide": "CC-BY-SA-4.0",
+    "generator": "GPL-3.0-only",
+    "cad_view_exports": "CERN-OHL-S-2.0",
+    "exceptions": "../../THIRD_PARTY_NOTICES.md"
+  }
+}

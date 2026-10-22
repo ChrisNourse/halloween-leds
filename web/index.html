@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151310">
+  <title>Halloween lights</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div><p class="kicker">October 31 / lighting desk</p><h1>Halloween lights</h1></div>
+      <div class="connection"><p id="connection-status" role="status">No board connected</p><button id="connect">Connect USB</button></div>
+    </header>
+
+    <div id="notice" role="status">Connect to the Feather to control the lights.</div>
+
+    <div class="desk">
+      <section aria-labelledby="patterns-title">
+        <div class="section-heading"><h2 id="patterns-title">Pattern</h2><span>Choose the motion</span></div>
+        <div id="patterns" class="patterns" role="group" aria-label="Light patterns"></div>
+        <p class="note">Your pattern stays selected until you change it. Every pattern uses the color or gradient below.</p>
+        <section class="palette" aria-labelledby="palette-title">
+          <h2 id="palette-title">Color</h2>
+          <label for="color-mode">Color source <select id="color-mode" disabled><option value="solid">Single color</option><option value="gradient">Gradient</option></select></label>
+          <label for="color"><span id="color-label">Light color</span><input id="color" type="color" value="#ff4100" disabled></label>
+          <p class="note">Color changes reach the LEDs while you choose. The final color saves when you finish.</p>
+          <div id="gradient-editor" hidden>
+            <p class="note" id="gradient-note">Across both sticks, from LED 1 to LED 16. Select a stop to edit its color, position and fade.</p>
+            <div class="gradient-rail" id="gradient-rail"><div id="gradient-bar" aria-hidden="true"></div><div id="gradient-stops" role="group" aria-label="Gradient color stops"></div></div>
+            <p class="note" id="gradient-stop-help">Drag a numbered stop to move it. Selected position: <output id="stop-position-value">0%</output>. Arrow keys move 1%; Shift + arrow moves 10%. End stops stay fixed.</p>
+            <label for="fade-midpoint">Fade midpoint to next stop <output id="fade-midpoint-value">50%</output></label>
+            <input id="fade-midpoint" type="range" min="1" max="99" value="50" disabled>
+            <p class="note" id="fade-note">The midpoint sets where this color and the next color mix equally.</p>
+            <div class="actions"><button id="add-stop" class="quiet" disabled>Add color stop</button><button id="remove-stop" class="quiet" disabled>Remove stop</button></div>
+          </div>
+          <p class="note">Pattern and color changes save automatically, including after a power cycle.</p>
+        </section>
+      </section>
+      <section class="controls" aria-labelledby="controls-title">
+        <h2 id="controls-title">Tune the lights</h2>
+        <label for="automatic">Sunset schedule <input id="automatic" type="checkbox" checked disabled></label>
+        <p class="note" id="schedule-note">Connect to read the schedule. Sunset on, sunrise off, with late-night dimming.</p>
+        <p class="note">Current output: <output id="effective-brightness">not connected</output></p>
+        <label for="brightness">Brightness <output id="brightness-value">15%</output></label>
+        <input id="brightness" type="range" min="0" max="100" step="1" value="15" disabled>
+        <label for="speed">Speed <output id="speed-value">1.00×</output></label>
+        <input id="speed" type="range" min="0.25" max="3" step="0.05" value="1" disabled>
+        <div class="actions"><button id="blackout" disabled>Blackout</button><button id="save" class="quiet" disabled>Save startup settings</button></div>
+        <p class="note" id="save-note">Save brightness, speed, schedule and blackout as startup settings. Pattern and color choices already save automatically.</p>
+      </section>
+    </div>
+    <footer><details><summary>Connection &amp; OTA updates</summary><p>Open <strong>http://halloween.local</strong> on the same Wi-Fi network to control the lights directly. For USB control from this Mac, use Chrome or Edge and select the Feather’s data interface, usually the second port. Debugging uses the first port or the Wi-Fi console.</p><p>With the sunset schedule enabled, the board sleeps during the day and wakes automatically for sunset. The website, OTA service, and heartbeat are off during deep sleep. Press BOOT to wake it for access. Turning off the sunset schedule keeps manual controls and Wi-Fi available.</p><p id="ota-address">Connect to read the board’s OTA address.</p><p>Firmware and OTA updates are managed from this repository. Run <code>uv run scripts/device.py ota --url http://halloween.local:8080</code> while the board is awake. The USB disk stays hidden during normal use so OTA can write safely. OTA updates application files and this website; install CircuitPython runtime updates over USB.</p><p>If attaching the sticks stops the board from running, unplug power and check 5V, ground, DIN and DOUT wiring before reconnecting.</p></details></footer>
+  </main>
+  <aside id="connection-dock" aria-label="Connection recovery" hidden><span id="dock-status" role="status">Lights disconnected</span><button id="reconnect">Reconnect now</button></aside>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

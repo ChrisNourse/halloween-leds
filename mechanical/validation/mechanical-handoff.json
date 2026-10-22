@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-22",
+  "changes": {
+    "base": {
+      "d22": 0.5,
+      "d96": 0.5
+    },
+    "faceplate": {
+      "pcb_relief_corner_radius": 0.5,
+      "led_aperture_corner_radius": 0.5
+    },
+    "led-retainer": {
+      "frame_corner_radius": 0.5,
+      "outer_rail_corner_radius": 0.5
+    }
+  },
+  "exceptions": [
+    "Base d51 retained R0.4: R0.5 causes floor-root fillets 164 and 165 to fail; restoring R0.4 clears errors.",
+    "Base d114 retained R0.4: R0.5 eliminates straight ends of existing 1 mm-wide rounded-rectangle sketch.",
+    "Z-root reliefs, YZ USB opening rounding, chamfers and clearance-specific smaller radii unchanged."
+  ],
+  "health": {
+    "base": "No feature errors; existing feature 167 geometry-reference warning remains. Nine solved sketches, zero DOF.",
+    "faceplate": "No feature errors or warnings; four solved sketches, zero DOF.",
+    "led-retainer": "No feature errors or warnings; three solved sketches, zero DOF."
+  },
+  "source_sha256": {
+    "base": "629c2172e33b49eff9ac247878c783315e8fa2103fe733096721aa5cfc52c138",
+    "faceplate": "6adea94b270e026926e6003f31d5a6661773ac0a2ad7e9173c79d20809508da4",
+    "led-retainer": "7a30c123104bab20573eb191b2751051fdc2aa693c616eb64b9ca01efa3b4cf9",
+    "enclosure": "32113f8444b22f50b2c44050651c82488019310408d8574bbde73b96f7630d57"
+  },
+  "source_revision": "294cd1f",
+  "interference": {
+    "checked": 26,
+    "count": 0,
+    "pairs_not_checked": 0,
+    "unchecked": []
+  },
+  "note": "Native checks performed by the mechanical editing agent; print exports subsequently regenerated and checked separately."
+}

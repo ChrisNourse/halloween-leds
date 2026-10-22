@@ -1,0 +1,14 @@
+# Copy to CIRCUITPY/settings.toml and fill in locally. Never commit secrets.
+CIRCUITPY_WIFI_SSID="YOUR_2_4_GHZ_WIFI"
+CIRCUITPY_WIFI_PASSWORD="YOUR_WIFI_PASSWORD"
+CIRCUITPY_WEB_API_PASSWORD="GENERATE_A_UNIQUE_DEVICE_PASSWORD"
+CIRCUITPY_WEB_API_PORT=8080
+CIRCUITPY_WEB_INSTANCE_NAME="Halloween LEDs"
+
+# Sunset schedule defaults to San Francisco. Change all three values for your location.
+# Coordinates use decimal degrees, quoted for CircuitPython compatibility.
+# North/east positive; south/west negative. Blank coordinates keep manual lighting available.
+LATITUDE="37.7749"
+LONGITUDE="-122.4194"
+# IANA timezone for browser display, e.g. America/New_York or Europe/London.
+TIMEZONE="America/Los_Angeles"

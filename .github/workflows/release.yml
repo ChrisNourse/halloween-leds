@@ -1,0 +1,89 @@
+name: Prepare release draft
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to prepare
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - name: Validate tag format
+        shell: bash
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.-]+)?$ ]]; then
+            echo 'Expected a version tag such as v0.9.0 or v1.0.0-beta.1.' >&2
+            exit 1
+          fi
+
+      - name: Check out tagged source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify version and prepare release files
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD)" = "$(git rev-parse "refs/tags/$RELEASE_TAG^{commit}")"
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const lock = JSON.parse(fs.readFileSync('package-lock.json', 'utf8'));
+          if (process.env.RELEASE_TAG !== `v${pkg.version}` || lock.version !== pkg.version || lock.packages[''].version !== pkg.version) {
+            throw new Error('Tag, package.json and package-lock.json versions must match.');
+          }
+          JS
+          test -s docs/Halloween-LEDs-Build-Guide.pdf
+          test -s STATUS.md
+          notes="$RUNNER_TEMP/release-notes.md"
+          intro="docs/releases/$RELEASE_TAG.md"
+          if [[ -f "$intro" ]]; then
+            cat "$intro" > "$notes"
+            printf '\n\n' >> "$notes"
+          else
+            : > "$notes"
+          fi
+          cat STATUS.md >> "$notes"
+          git archive --format=zip --output="$RUNNER_TEMP/halloween-leds-$RELEASE_TAG.zip" HEAD
+
+      - name: Create draft with generated release notes
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "A release already exists for $RELEASE_TAG; leaving it unchanged."
+            exit 0
+          fi
+          flags=()
+          if [[ "$RELEASE_TAG" == v0.* || "$RELEASE_TAG" == *-* ]]; then
+            flags+=(--prerelease)
+          fi
+          gh release create "$RELEASE_TAG" \
+            "$RUNNER_TEMP/halloween-leds-$RELEASE_TAG.zip" \
+            docs/Halloween-LEDs-Build-Guide.pdf \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag --draft --generate-notes \
+            --title "$RELEASE_TAG" \
+            --notes-file "$RUNNER_TEMP/release-notes.md" \
+            "${flags[@]}"
