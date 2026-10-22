@@ -29,6 +29,17 @@ class VersionTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 version.validate_version(invalid)
 
+    def test_one_semantic_label_is_required_but_other_labels_are_allowed(self):
+        for name in ("patch", "minor", "major"):
+            self.assertEqual(version.semantic_label(["documentation", name, "enhancement"]), name)
+
+    def test_missing_conflicting_and_incorrectly_named_version_labels_fail(self):
+        for names in ([], ["documentation"], ["Patch"], ["semver:patch"],
+                      ["patch", "minor"], ["minor", "major"], ["patch", "major"],
+                      ["patch", "minor", "major"]):
+            with self.subTest(labels=names), self.assertRaisesRegex(ValueError, "exactly one version label"):
+                version.semantic_label(names)
+
     def test_sync_updates_current_versions_preserving_history_and_dependencies(self):
         historical = (self.root / "docs/releases/v0.9.0.md").read_bytes()
         package = json.loads((self.root / "package-lock.json").read_text())

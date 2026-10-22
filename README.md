@@ -165,7 +165,7 @@ npm run test:browser
 
 The test suites cover firmware behavior, installation/OTA, browser controls, location settings, polar-season fallback and HTTP host validation. Physical assembly, thermal performance, battery runtime and sunrise/sunset transitions need their own hardware checks; see [project status](STATUS.md).
 
-[CI](.github/workflows/ci.yml) runs host tests, Chromium browser tests, GitHub Actions workflow linting and version consistency checks on every PR and after merges to `main`. All four checks are required before merging. Failed browser runs provide an HTML report and traces in the workflow artifacts. Version changes use a [single synchronization command](docs/releasing.md#version-management).
+[CI](.github/workflows/ci.yml) runs host tests, Chromium browser tests, GitHub Actions workflow linting and version consistency checks on every PR and after merges to `main`. All four checks are required before merging. Every PR must have exactly one `patch`, `minor` or `major` label; the version check enforces this and reruns on label changes. Failed browser runs provide an HTML report and traces in the workflow artifacts. Version changes use a [single synchronization command](docs/releasing.md#version-management).
 
 ## Release and license
 
