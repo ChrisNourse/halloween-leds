@@ -1,0 +1,11 @@
+{
+  "base_tag": "v0.9.2",
+  "base_sha": "6596817e9e201b6e4823ff690313a2fd3b7fd4f9",
+  "source_sha": "c5975c0001c9e9c37af7f71981121b0af2947629",
+  "version": "0.9.3",
+  "bump": "patch",
+  "pull_requests": [
+    4,
+    5
+  ]
+}

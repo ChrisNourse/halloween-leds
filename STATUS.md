@@ -1,6 +1,6 @@
 # Project status
 
-**v0.9.2 — experimental. Hardware qualification is in progress.**
+**v0.9.3 — experimental. Hardware qualification is in progress.**
 
 The firmware, browser controls, editable CAD, four print meshes and illustrated build guide are available for builders who are comfortable testing an unfinished hardware design. Version v1.0.0 is reserved for the qualified build.
 
