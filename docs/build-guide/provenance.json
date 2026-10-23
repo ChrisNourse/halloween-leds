@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "edition": "v0.9.2 experimental",
+  "edition": "v0.9.3 experimental",
   "cad_snapshot": "Final saved mechanical handoff, copied unchanged for presentation and export.",
   "history_checkpoint": "294cd1f7de67e81fa27a6ba7764eaf110d739fe0",
   "images": "Native SolidCraft file.export_view_dxf; layers rendered as vector lines. Appearance and exploded placement only; no geometry edits.",
